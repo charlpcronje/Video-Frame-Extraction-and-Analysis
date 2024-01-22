@@ -1,0 +1,125 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Ignite AI Web App API",
+        "description": "API for the Ignite AI Web App",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/extract_frames": {
+            "post": {
+                "summary": "Extract frames from a video",
+                "tags": [
+                    "Frames"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "video_path": {
+                                        "type": "string",
+                                        "description": "Path to the video file"
+                                    },
+                                    "output_folder": {
+                                        "type": "string",
+                                        "description": "Path to the output folder"
+                                    },
+                                    "frames_to_skip": {
+                                        "type": "integer",
+                                        "description": "Number of frames to skip"
+                                    },
+                                    "total_images_to_extract": {
+                                        "type": "integer",
+                                        "description": "Total number of images to extract"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Frames extracted successfully"
+                    }
+                }
+            }
+        },
+        "/api/analyze_images": {
+            "post": {
+                "summary": "Analyze images for sharpness",
+                "tags": [
+                    "Images"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "source_folder": {
+                                        "type": "string",
+                                        "description": "Path to the source folder with images"
+                                    },
+                                    "sharp_images_folder": {
+                                        "type": "string",
+                                        "description": "Path to the folder for sharp images"
+                                    },
+                                    "sharpness_threshold": {
+                                        "type": "integer",
+                                        "description": "Sharpness threshold value"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Images analyzed successfully"
+                    }
+                }
+            }
+        },
+        "/api/generate_collage": {
+            "post": {
+                "summary": "Generate collage images",
+                "tags": [
+                    "Collage"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "frames_folder": {
+                                        "type": "string",
+                                        "description": "Path to the source folder with images"
+                                    },
+                                    "collage_folder": {
+                                        "type": "string",
+                                        "description": "Path to the folder for collage images"
+                                    }
+                                },
+                                "required": ["frames_folder", "collage_folder"]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Collage images generated successfully"
+                    },
+                    "400": {
+                        "description": "Bad request. Required parameters are missing"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        }        
+    }
+}

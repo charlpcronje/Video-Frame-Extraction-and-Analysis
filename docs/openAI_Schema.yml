@@ -1,0 +1,75 @@
+# OpenAPI Schema
+
+Here is the OpenAPI schema for the Ignite AI Web App:
+
+```yaml
+openapi: 3.0.0
+info:
+  title: Ignite AI Web App
+  version: 1.0.0
+paths:
+  /extract_frames:
+    post:
+      summary: Extract frames from a video file.
+      description: Extract frames from a video file with optional frame skipping and total images to extract.
+      parameters:
+        - in: formData
+          name: video_file_path
+          required: true
+          description: Path to the video file.
+          schema:
+            type: string
+        - in: formData
+          name: output_directory
+          required: true
+          description: Output folder for extracted frames.
+          schema:
+            type: string
+        - in: formData
+          name: frames_to_skip
+          required: false
+          description: Number of frames to skip between frames to save.
+          schema:
+            type: integer
+        - in: formData
+          name: total_images_to_extract
+          required: false
+          description: Total number of images to extract.
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Frames extracted successfully.
+        '400':
+          description: Missing video file path or output directory.
+        '500':
+          description: Internal server error.
+  
+  /api/generate_collage:
+  post:
+    summary: Generate collage images
+    tags:
+      - Collage
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              frames_folder:
+                type: string
+                description: Path to the source folder with images
+              collage_folder:
+                type: string
+                description: Path to the folder for collage images
+            required:
+              - frames_folder
+              - collage_folder
+    responses:
+      '200':
+        description: Collage images generated successfully
+      '400':
+        description: Bad request. Required parameters are missing
+      '500':
+        description: Internal server error
