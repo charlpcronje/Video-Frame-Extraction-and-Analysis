@@ -182,4 +182,11 @@ For any queries or assistance, please reach out to:
 - **LinkedIn**: [https://www.linkedin.com/in/charlpcronje](https://www.linkedin.com/in/charlpcronje)
 
 ## Additional Documentation
-For a comprehensive explanation of the application code, logic blocks, and usage examples, please refer to the [Explain.md](./explain.md) file.
+For a comprehensive explanation of the application code, logic blocks, and usage examples.
+
+- [Command-Line Interface](./docs/cli.md)
+- [Authentication](./docs/auth.md)
+- [Environment Variable](./env.example.md)
+- [Code Explained](./docs/explain.md)
+- [API Documentation](./docs/api.md)
+- OpenAI Schema [JSON](./openai.schema.json), [YML](./openAI_schema.yml)
